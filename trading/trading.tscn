@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw2q6fd3a13va"]
+
+[ext_resource type="Theme" uid="uid://chm13bv4ibhon" path="res://Theme/ThemeModern.tres" id="1_ov46y"]
+[ext_resource type="FontFile" uid="uid://kckmmxc8af66" path="res://fonts/BebasNeue-Regular.ttf" id="2_vkvjl"]
+[ext_resource type="Script" uid="uid://477fdwu2lcg3" path="res://trading/scroll_container.gd" id="3_vkvjl"]
+
+[node name="trading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ov46y")
+
+[node name="backgound" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -65.0
+offset_top = -1779.0
+offset_right = 1493.0
+offset_bottom = 971.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_vkvjl")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "[center]T R A D I N G"
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "ACCEPT TRADE"
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "REKECT TRADE"
+
+[node name="ScrollContainer3" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="collectionTitle" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 79)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_vkvjl")
+theme_override_font_sizes/normal_font_size = 65
+bbcode_enabled = true
+text = "[center]C O L L E C T I O N"
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(323, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 22
+placeholder_text = "～ Search..."
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("3_vkvjl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 10

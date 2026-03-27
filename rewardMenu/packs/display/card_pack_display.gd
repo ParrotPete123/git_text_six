@@ -49,10 +49,10 @@ func open_pack():
 	if ready_to_open:
 		self.hide()
 		for n in 15:
-			var pack_particle = load("res://rewardMenu/packParticles/pack_particle.tscn").instantiate()
+			var pack_particle = preload("res://rewardMenu/packParticles/pack_particle.tscn").instantiate()
 			get_parent().add_child(pack_particle)
 		for n in 3:
-			var card_display = load("res://rewardMenu/cardDisplay/card_display.tscn").instantiate()
+			var card_display = preload("res://rewardMenu/cardDisplay/card_display.tscn").instantiate()
 			card_display.global_position = global_position
 			card_display.anchor_pos = Vector2(725,315.25) - Vector2(125,0)*2 + Vector2(250,0)*n
 			card_display.card_pack_ref = self

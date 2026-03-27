@@ -13,21 +13,39 @@ var card_list = {
 		CardData.new("Six Feet","Would you rather be six foot or six feet?","misfits"),
 		CardData.new("Wick Witch","'From my Keanu Sleeves I pull out a dead dog!'","misfits"),
 	],
-	"Rare": [],
+	"Rare": [
+		CardData.new("Cool Monkey","Only slightly AI-generated."),
+		CardData.new("Stubborn Monkey","The look when he realizes you need a bath."),
+		CardData.new("Demon Monkey","Somehow your study habits are improving."),
+		CardData.new("Nose Monkey","Somehow more nose than monkey.")
+		
+	],
 	"Super Rare": [],
 	"Epic": [],
 	"Legendary": [],
 }
+
+var nameToCard = {
+	
+}
+
 
 var set_list = {
 	"misfits": []
 }
 
 var owned_set_list = {
-	"misfits": []
 }
 
+## ALEX WHYYYY
+func fixAlexWarCrimes():
+	for rarity in card_list:
+		for card in card_list[rarity]:
+			nameToCard[card.card_name] = card
+	
 func _ready():
-	for n in card_list:
-		for j in card_list[n]:
-			set_list[j.which_set].append(j)
+	SaveData.loadData()
+	fixAlexWarCrimes()
+	#for n in card_list:
+	#	for j in card_list[n]:
+	#		set_list[j.which_set].append(j)

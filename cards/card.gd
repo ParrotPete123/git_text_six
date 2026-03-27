@@ -1,18 +1,20 @@
-extends Node2D
+extends Control
 var which_card = 0
-var which_rarity: String
+var which_rarity: String = "Common"
 var tween: Tween
 var can_be_flipped: bool = false
 var sideways_velocity: Vector2
 var return_velocity: Vector2
 var returning: bool
+var chosen_card_data
 var card_pack_ref #only used when a card is pulled out of a pack
 
 func _ready():
+	position -= $Texture.size/2
 	if card_pack_ref:
 		card_pack_ref.finish_pack.connect(on_pack_finish)
 	if can_be_flipped:
-		var luck_value = randi_range(1,1)
+		var luck_value = randi_range(1,85)
 		if luck_value <= 50:
 			which_rarity = "Common"
 		elif luck_value <= 85:
@@ -28,20 +30,24 @@ func _ready():
 	if can_be_flipped:
 		scale.x = 0
 		reset_tween()
-		tween.tween_property(self,"scale",Vector2(1,1),0.2)
+		tween.tween_property(self,"scale",Vector2(1,1),0.2).set_trans(Tween.TRANS_EXPO)
 
 func _physics_process(_delta: float) -> void:
 	if returning:
 		return_card(_delta)
 
 func initialize_card():
-	var chosen_card_data = Gv.card_list[which_rarity][which_card]
-	$TextureRect.texture = chosen_card_data.texture
-	$cardTitle.text = "[center]" + chosen_card_data.card_name
-	$cardDesc.text = chosen_card_data.description
+	chosen_card_data = Gv.card_list[which_rarity][which_card]
+	$"2D/card/M/TextureRect".texture = chosen_card_data.texture
+	$"2D/card/cardTitle".text = "[center]" + chosen_card_data.card_name
+	$"2D/card/cardDesc".text = chosen_card_data.description
 	if can_be_flipped:
 		chosen_card_data.copies += 1
-		Gv.owned_set_list[chosen_card_data.which_set].append(chosen_card_data)
+		if Gv.owned_set_list.has(chosen_card_data.card_name):
+			Gv.owned_set_list[chosen_card_data.card_name] += 1
+		else:
+			Gv.owned_set_list[chosen_card_data.card_name] = 1
+		SaveData.saveData()
 
 func reset_tween():
 	if tween:

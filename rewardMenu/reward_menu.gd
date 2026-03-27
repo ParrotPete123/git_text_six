@@ -1,7 +1,7 @@
 extends Node2D
 
 var reward_phase = 0
-var packs_earned = 3
+var packs_earned = 1
 var pack_ref = []
 @export var pack_display_path: PackedScene
 

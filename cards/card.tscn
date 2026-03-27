@@ -1,42 +1,117 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciguwiilk14wi"]
+[gd_scene load_steps=8 format=3 uid="uid://ciguwiilk14wi"]
 
 [ext_resource type="Script" uid="uid://d143ybljydgd0" path="res://cards/card.gd" id="1_f61jr"]
 [ext_resource type="Texture2D" uid="uid://cuw56k8uhdrja" path="res://cards/cardAssets/Biped Dog.png" id="2_jsqqk"]
+[ext_resource type="Script" uid="uid://bhk3opebpkhih" path="res://cards/cardTexture.gd" id="2_nwj5s"]
 [ext_resource type="Texture2D" uid="uid://cldf6ue4g3w20" path="res://cards/moreCardAssets/lockin-cardtemplate.png" id="3_nwj5s"]
 [ext_resource type="FontFile" uid="uid://kckmmxc8af66" path="res://fonts/BebasNeue-Regular.ttf" id="4_hel13"]
 
-[node name="card" type="Node2D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_f61jr"]
+viewport_path = NodePath("3D")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nwj5s"]
+viewport_path = NodePath("2D")
+
+[node name="card" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_f61jr")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -79.0
-offset_top = -125.0
-offset_right = 74.0
-offset_bottom = 112.0
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 240.975
+offset_bottom = 348.3
+texture = SubResource("ViewportTexture_f61jr")
+expand_mode = 1
+script = ExtResource("2_nwj5s")
+
+[node name="2D" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(357, 516)
+size_2d_override = Vector2i(1, 1)
+render_target_update_mode = 4
+
+[node name="card" type="TextureRect" parent="2D"]
+custom_minimum_size = Vector2(357, 516)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 357.0
+offset_bottom = 516.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(178.5, 258)
+texture = ExtResource("3_nwj5s")
+stretch_mode = 5
+
+[node name="M" type="MarginContainer" parent="2D/card"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="2D/card/M"]
+layout_mode = 2
 texture = ExtResource("2_jsqqk")
 expand_mode = 1
+stretch_mode = 6
 
-[node name="card_template" type="Sprite2D" parent="."]
-scale = Vector2(0.4810345, 0.5)
-texture = ExtResource("3_nwj5s")
-
-[node name="cardTitle" type="RichTextLabel" parent="."]
-offset_left = -79.0
-offset_right = 74.0
-offset_bottom = 40.0
+[node name="cardTitle" type="RichTextLabel" parent="2D/card"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 15.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0.20392157, 1)
 theme_override_fonts/normal_font = ExtResource("4_hel13")
-theme_override_font_sizes/normal_font_size = 29
+theme_override_font_sizes/normal_font_size = 58
 bbcode_enabled = true
 text = "[center]Biped Dog"
 
-[node name="cardDesc" type="RichTextLabel" parent="."]
-offset_left = -72.0
-offset_top = 32.0
-offset_right = 66.0
-offset_bottom = 112.0
+[node name="cardDesc" type="RichTextLabel" parent="2D/card"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -145.5
+offset_top = -182.0
+offset_right = 148.5
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/default_color = Color(0.9032702, 0.93596214, 1, 1)
 theme_override_fonts/normal_font = ExtResource("4_hel13")
-theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]people thought he just wanted to be human, but he actually dreams of becoming a bowling pin."
+
+[node name="3D" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(357, 516)
+
+[node name="Sprite3D" type="Sprite3D" parent="3D"]
+pixel_size = 1.0
+texture = SubResource("ViewportTexture_nwj5s")
+
+[node name="Pivot" type="Node3D" parent="3D"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="3D/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 459.8438)
+
+[connection signal="mouse_entered" from="Texture" to="Texture" method="mouseEnter"]
+[connection signal="mouse_exited" from="Texture" to="Texture" method="mouseLeave"]
