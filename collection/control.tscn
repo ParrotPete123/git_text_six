@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8vw8ivtsi5nb"]
+
+[ext_resource type="Script" uid="uid://cjqnh15l7rjs3" path="res://collection/control.gd" id="1_sf6cy"]
+[ext_resource type="Texture2D" uid="uid://cuw56k8uhdrja" path="res://cards/cardAssets/Biped Dog.png" id="2_q033r"]
+[ext_resource type="Texture2D" uid="uid://cldf6ue4g3w20" path="res://cards/moreCardAssets/lockin-cardtemplate.png" id="3_rkbxy"]
+[ext_resource type="FontFile" uid="uid://kckmmxc8af66" path="res://fonts/BebasNeue-Regular.ttf" id="4_w55mj"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sf6cy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -79.0
+offset_top = 25.25
+offset_right = 74.0
+offset_bottom = 262.25
+texture = ExtResource("2_q033r")
+expand_mode = 1
+
+[node name="card_template" type="Sprite2D" parent="."]
+position = Vector2(0, 150.25)
+scale = Vector2(0.4810345, 0.5)
+texture = ExtResource("3_rkbxy")
+
+[node name="cardTitle" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -79.0
+offset_top = 150.25
+offset_right = 74.0
+offset_bottom = 190.25
+theme_override_colors/default_color = Color(0, 0, 0.20392157, 1)
+theme_override_fonts/normal_font = ExtResource("4_w55mj")
+theme_override_font_sizes/normal_font_size = 29
+bbcode_enabled = true
+text = "[center]Biped Dog"
+
+[node name="cardDesc" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -72.0
+offset_top = 182.25
+offset_right = 66.0
+offset_bottom = 262.25
+theme_override_colors/default_color = Color(0.9032702, 0.93596214, 1, 1)
+theme_override_fonts/normal_font = ExtResource("4_w55mj")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]people thought he just wanted to be human, but he actually dreams of becoming a bowling pin."

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf6r0qdct7xt"]
+
+[ext_resource type="Texture2D" uid="uid://b053nag2vlmw0" path="res://rewardMenu/rewardAssets/lockin-reward_screen_cardpack.png" id="1_8b1p3"]
+[ext_resource type="Script" uid="uid://uiweekc26vut" path="res://rewardMenu/packs/display/card_pack_display.gd" id="1_afwgi"]
+[ext_resource type="Texture2D" uid="uid://dw63q1putmwk4" path="res://rewardMenu/packFaces/Screenshot 2025-07-29 153004.png" id="2_afwgi"]
+
+[node name="cardPackDisplay" type="Node2D"]
+script = ExtResource("1_afwgi")
+
+[node name="cardPack" type="Sprite2D" parent="."]
+texture = ExtResource("1_8b1p3")
+
+[node name="TextureRect" type="TextureRect" parent="cardPack"]
+offset_left = -72.0
+offset_top = -132.0
+offset_right = 74.0
+offset_bottom = 33.0
+mouse_filter = 2
+texture = ExtResource("2_afwgi")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = -121.0
+offset_top = -188.0
+offset_right = 124.0
+offset_bottom = 187.0
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

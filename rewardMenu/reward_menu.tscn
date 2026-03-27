@@ -1,0 +1,257 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3l5v2in5lp1e"]
+
+[ext_resource type="Script" uid="uid://bkrtk2qtt3m3t" path="res://rewardMenu/reward_menu.gd" id="1_joi5u"]
+[ext_resource type="PackedScene" uid="uid://cf6r0qdct7xt" path="res://rewardMenu/packs/display/card_pack_display.tscn" id="2_lhdo3"]
+[ext_resource type="Texture2D" uid="uid://bmdulq5440bdg" path="res://rewardMenu/rewardAssets/lockin-reward_screen.png" id="2_shw52"]
+[ext_resource type="FontFile" uid="uid://kckmmxc8af66" path="res://fonts/BebasNeue-Regular.ttf" id="3_lhdo3"]
+[ext_resource type="Texture2D" uid="uid://b2uxfci02uafq" path="res://rewardMenu/rewardAssets/lockin-reward_screen_gradient.png" id="4_r1koa"]
+[ext_resource type="Texture2D" uid="uid://cxtd1t31tbjce" path="res://rewardMenu/rewardAssets/lockin-reward_screen_clock.png" id="5_htqrr"]
+
+[sub_resource type="Animation" id="Animation_lhdo3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("continueButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(610, 847)]
+}
+
+[sub_resource type="Animation" id="Animation_r1koa"]
+resource_name = "continue"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("continueButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(610, 847), Vector2(610, 742)]
+}
+
+[sub_resource type="Animation" id="Animation_26dpp"]
+resource_name = "reward_animation"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(0.20306288, 1),
+"update": 0,
+"values": [Vector2(-562, 101), Vector2(687, 101)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("subtitle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.8333333),
+"transitions": PackedFloat32Array(0.19614607, 1),
+"update": 0,
+"values": [Vector2(-254, 254.25), Vector2(658, 254.25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("continueButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.73333335, 1.3666667),
+"transitions": PackedFloat32Array(0.18946461, 1),
+"update": 0,
+"values": [Vector2(610, 847), Vector2(610, 734)]
+}
+
+[sub_resource type="Animation" id="Animation_8h81s"]
+resource_name = "time_animation"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("stats/gradient:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.627451)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("stats/statsLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 1.1333333),
+"transitions": PackedFloat32Array(0.28717482, 1),
+"update": 0,
+"values": [Vector2(-373, 401), Vector2(139, 401)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("stats/clockSymbol:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 1.1333333),
+"transitions": PackedFloat32Array(0.26794344, 1),
+"update": 0,
+"values": [Vector2(1701, 522), Vector2(1066, 522)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("continueButton:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(0.29730198, 1),
+"update": 0,
+"values": [Vector2(610, 734), Vector2(610, 1134)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0fwl"]
+_data = {
+&"RESET": SubResource("Animation_lhdo3"),
+&"continue": SubResource("Animation_r1koa"),
+&"reward_animation": SubResource("Animation_26dpp"),
+&"time_animation": SubResource("Animation_8h81s")
+}
+
+[node name="rewardMenu" type="Node2D"]
+script = ExtResource("1_joi5u")
+pack_display_path = ExtResource("2_lhdo3")
+
+[node name="backgound" type="ColorRect" parent="."]
+offset_left = -65.0
+offset_top = -101.0
+offset_right = 1493.0
+offset_bottom = 971.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="title" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.6509804, 0.2, 1)
+position = Vector2(-562, 101)
+texture = ExtResource("2_shw52")
+
+[node name="title" type="Sprite2D" parent="title"]
+self_modulate = Color(1, 0.6509804, 0.2, 1)
+position = Vector2(-1107, 0)
+texture = ExtResource("2_shw52")
+flip_h = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="title/title"]
+offset_left = 482.0
+offset_top = -62.0
+offset_right = 965.0
+offset_bottom = 421.0
+theme_override_fonts/normal_font = ExtResource("3_lhdo3")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[wave]Time's Up!"
+
+[node name="subtitle" type="Sprite2D" parent="."]
+modulate = Color(0, 0.69803923, 1, 1)
+position = Vector2(-254, 254.25)
+scale = Vector2(0.42513376, 0.4251338)
+texture = ExtResource("2_shw52")
+
+[node name="subtitle" type="Sprite2D" parent="subtitle"]
+position = Vector2(-1107, 0)
+texture = ExtResource("2_shw52")
+flip_h = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="subtitle"]
+offset_left = -1949.9745
+offset_top = -62.0
+offset_right = 263.44666
+offset_bottom = 421.0
+theme_override_fonts/normal_font = ExtResource("3_lhdo3")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center][wave]*  time to clame your rewards! *"
+
+[node name="continueButton" type="Button" parent="."]
+offset_left = 610.0
+offset_top = 847.0
+offset_right = 840.0
+offset_bottom = 909.0
+pivot_offset = Vector2(115, 0)
+theme_override_fonts/font = ExtResource("3_lhdo3")
+theme_override_font_sizes/font_size = 44
+text = "CONTINUE"
+
+[node name="stats" type="Node2D" parent="."]
+
+[node name="gradient" type="Sprite2D" parent="stats"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(725, 412.5)
+texture = ExtResource("4_r1koa")
+
+[node name="statsLabel" type="RichTextLabel" parent="stats"]
+offset_left = -373.0
+offset_top = 401.0
+offset_right = 268.0
+offset_bottom = 938.0
+theme_override_fonts/normal_font = ExtResource("3_lhdo3")
+theme_override_font_sizes/normal_font_size = 100
+text = "Time Spent Studying:"
+
+[node name="clockSymbol" type="Sprite2D" parent="stats"]
+position = Vector2(1701, 522)
+texture = ExtResource("5_htqrr")
+
+[node name="timeStudied" type="RichTextLabel" parent="stats/clockSymbol"]
+offset_left = -75.0
+offset_top = -72.0
+offset_right = 566.0
+offset_bottom = 465.0
+theme_override_fonts/normal_font = ExtResource("3_lhdo3")
+theme_override_font_sizes/normal_font_size = 200
+text = "70"
+
+[node name="cardPacks" type="Node2D" parent="."]
+
+[node name="packs" type="RichTextLabel" parent="cardPacks"]
+visible = false
+z_index = 1
+offset_left = 400.0
+offset_top = 624.0
+offset_right = 1040.0
+offset_bottom = 1161.0
+pivot_offset = Vector2(320, 0)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_lhdo3")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]x1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_s0fwl")
+}
+autoplay = "reward_animation"
+
+[connection signal="pressed" from="continueButton" to="." method="_on_continue_button_pressed"]

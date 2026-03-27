@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://do1amudyr5f6d"]
+
+[ext_resource type="Texture2D" uid="uid://bsm7igp2fsvpp" path="res://rewardMenu/packParticles/lockin-rewa7rd_screen.png" id="1_eej24"]
+[ext_resource type="Script" uid="uid://d3aakdcjnmlua" path="res://rewardMenu/packParticles/pack_particle.gd" id="2_ii6ug"]
+
+[node name="packParticle" type="Sprite2D"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_eej24")
+script = ExtResource("2_ii6ug")

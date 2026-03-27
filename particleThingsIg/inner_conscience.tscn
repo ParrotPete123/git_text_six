@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj1fhocy5ky3i"]
+
+[ext_resource type="Script" uid="uid://dnjafijiyqc5u" path="res://particleThingsIg/inner_conscience.gd" id="1_3wpcc"]
+
+[node name="inner_conscience" type="Label"]
+offset_left = -225.0
+offset_right = 226.0
+offset_bottom = 23.0
+text = "HOP OFF!!!!"
+horizontal_alignment = 1
+script = ExtResource("1_3wpcc")
